@@ -12,6 +12,10 @@
 #include <stdbool.h>
 #include "stm32f4xx.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 // Use this macro function to wait until SPI communication is complete
 #define SPI_Wait(SPIx)		while(((SPIx)->SR & (SPI_SR_TXE | SPI_SR_RXNE)) == 0 || ((SPIx)->SR & SPI_SR_BSY))
 
@@ -190,5 +194,9 @@ void SPI_CSHigh(uint16_t pin);
  * @param pin number if PortB
  */
 void SPI_CSLow(uint16_t pin);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif	/* SPI_H__ */

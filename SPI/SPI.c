@@ -2,7 +2,7 @@
  * SPI driver for all modules using SPI protocol.
  * To use this driver, you must initialize your own chip select GPIO pins in your respective source files.
  * @authors Sijin Woo
- * @lastRevised 11/19/2018
+ * @lastRevised 12/4/2018
  */
 
 /** Pins:
@@ -200,7 +200,7 @@ void SPI_WriteReadMulti8(uint8_t *txBuf, uint32_t txSize, uint8_t *rxBuf, uint32
 			rxBuf[i] = SPI_WriteRead8(txBuf[i]);
 		}
 		for(uint32_t i = txSize; i < txSize - rxSize; i++){
-			rxBuf[i] = SPI_ReadMulti8(0x00);
+			rxBuf[i] = SPI_WriteRead8(0x00);
 		}
 	}
 }
@@ -295,7 +295,7 @@ void SPI_WriteReadMulti16(uint16_t *txBuf, uint32_t txSize, uint16_t *rxBuf, uin
 			rxBuf[i] = SPI_WriteRead16(txBuf[i]);
 		}
 		for(uint32_t i = txSize; i < txSize - rxSize; i++){
-			rxBuf[i] = SPI_ReadMulti16(0x0000);
+			rxBuf[i] = SPI_WriteRead16(0x0000);
 		}
 	}
 }
